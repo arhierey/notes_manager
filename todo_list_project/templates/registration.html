@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Registration page{% endblock title %}
+
+{% block header %}
+    <div class="home">
+        <a href="{% url 'home' %}"><img src="https://upload.wikimedia.org/wikipedia/commons/6/67/PICOL_icon_Home.svg"></a>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="container">
+        <div class="reg-form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

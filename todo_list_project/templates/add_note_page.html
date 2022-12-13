@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Add new note{% endblock title %}
+
+{% block header %}
+    <div class="home">
+        <a href="{% url 'profile' %}"><img src="https://upload.wikimedia.org/wikipedia/commons/6/67/PICOL_icon_Home.svg"></a>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="add-page-container" >
+        <div class="add-form-container">
+            <form method="post" action="add_note">
+                {% csrf_token %}
+                <input type="text" name="header" placeholder="header" id="header" width="100px" />
+                <textarea rows="5" cols="50" name="content" placeholder="content" id="content">
+                </textarea>
+
+                <input type="radio" name="type" id="RF" value="RF">
+                <label for="RF">Reference</label>
+                <input type="radio" name="type" id="NT" value="NT">
+                <label for="NT">Note</label>
+                <input type="radio" name="type" id="MM" value="MM">
+                <label for="MM">Memo</label>
+                <input type="radio" name="type" id="TD" value="TD">
+                <label for="TD">ToDo</label>
+                <input type="radio" name="type" id="OT" value="OT">
+                <label for="OT">Other</label>
+
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

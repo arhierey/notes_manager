@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Your note{% endblock title %}
+
+{% block header %}
+    {# back #}
+    <div class="home">
+        <a href="back"><img src="https://upload.wikimedia.org/wikipedia/commons/6/67/PICOL_icon_Home.svg"></a>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{header}}</h1>
+        <p>{{content}}</p>
+    </div>
+{% endblock content %}

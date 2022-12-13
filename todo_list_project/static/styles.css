@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    background-color: #F4ECF1;
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #9973AF;
+    height: 50px;
+    padding: 10px;
+}
+
+.footer {
+    background-color: #9973AF;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.page-content {
+    padding: 20px;
+}
+
+.edited-note {
+    background-color: #E2D1BD;
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 5px;
+    padding: 10px;
+}
+
+.edit-container {
+    padding: 30px;
+}
+
+#id_type {
+    width: 100px;
+}
+
+.form-container {
+    background-color: #E2D1BD;
+    width: 20%;
+    text-align: center;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 5px;
+}
+
+.reg-form-container {
+    background-color: #E2D1BD;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 5px;
+    padding: 10px;
+}
+
+.reg-form-container form > ul {
+    list-style-type: none;
+}
+
+.form-container form > ul {
+    list-style-type: none;
+}
+
+.add-page-container {
+    padding: 30px;
+}
+
+.add-form-container {
+    background-color: #E2D1BD;
+    width: 80%;
+    text-align: left;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 5px;
+    padding: 10px;
+}
+
+#id_password {
+    width: 94%;
+    padding: 12px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#id_username, #id_first_name, #id_last_name, #id_email {
+    width: 94%;
+    padding: 12px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 600px;
+    justify-content: center;
+    padding: 40px;
+}
+
+.notes-container {
+    margin: auto;
+    width: 80%;
+}
+
+.one-note {
+    margin: 10px;
+    padding: 10px;
+    background-color: #D4BCD9;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 5px;
+}
+
+.one-note h3, p, img {
+    margin: 0 10px;
+}
+
+.star img {
+    width: 10px;
+}
+
+.home img {
+    width: 20px;
+}
+
+.home{
+    padding: 10px;
+}
+
+.circle img {
+    width: 10px;
+}
+
+main {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.plus_sign {
+    width: 60px;
+}
+
+.plus_sign a img {
+    width: 30px;
+}
+
+.header-log-out {
+    width: 60px;
+}
+
+.header-log-out a img {
+    width: 30px;
+}
+
+.signup, .login {
+    width: 60px;
+}
+
+.signup a {
+    color: #F4ECF1;
+}
+
+.login a {
+    color: #F4ECF1;
+}
+
+.footer p {
+    color: #F4ECF1;
+}
+
+.header-main {
+    display: grid;
+    grid-template-columns: 60px 60px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#username {
+    width: 94%;
+    padding: 12px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#header, #start-date, #end-date, #content {
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#header {
+    margin: 10px;
+}
+
+input[type=password], select {
+    width: 94%;
+    padding: 12px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type=submit] {
+    padding: 5px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #C69BA8;
+}
+
+.delete-button {
+    padding: 5px;
+    margin: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #C69BA8;
+}
+
+.filter-container {
+    background-color: #E2D1BD;
+    width: 100%;
+}
+
+#filter-form > * {
+    padding-left: 7px;
+}
+
+.buttons-left {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.buttons {
+    grid-auto-flow: column;
+    display: grid;
+
+    justify-content: space-between;
+}
+

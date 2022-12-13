@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Main page{% endblock title %}
+
+{% block header %}
+    {# Add button #}
+    <div class="header-main">
+        <div class="plus_sign">
+            <a href="new_note">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Plus_symbol.svg">
+            </a>
+        </div>
+        {# log-out #}
+        <div class="header-log-out">
+            <a href="logout">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/DoorIcon.svg">
+            </a>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    {# filter, sorting #}
+    <div class="filter-container">
+        <form method="post" id="filter-form" action="filter_it">
+            {% csrf_token %}
+            <input type="text" id="header" name="header" placeholder="Enter header value">
+
+            <label for="start-date">Start date:</label>
+            <input id="start-date" name="start-date" type="date">
+
+            <label for="end-date">End date</label>
+            <input id="end-date" name="end-date" type="date">
+
+            <input type="checkbox" id="RF" name="RF" value="RF">
+            <label for="RF">Reference</label>
+
+            <input type="checkbox" id="TD" name="TD" value="TD">
+            <label for="TD">ToDo</label>
+
+            <input type="checkbox" id="NT" name="NT" value="NT">
+            <label for="NT">Note</label>
+
+            <input type="checkbox" id="MM" name="MM" value="MM">
+            <label for="MM">Memo</label>
+
+            <input type="checkbox" id="OT" name="OT" value="OT">
+            <label for="OT">Other</label>
+
+            <input type="checkbox" id="fav" name="fav">
+            <label for="fav">Favorite</label>
+
+            <button type="submit">Apply</button>
+        </form>
+    </div>
+
+    {# notes list #}
+    {% if request.user.is_authenticated %}
+        <div class="notes-container">
+            {% for note in notes %}
+                <div class="one-note">
+                    <form method="post" id="note{{note.uuid}}" action="edit_note">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{note.uuid}}" id="note" name="note">
+                    </form>
+                    <form method="post" id="{{note.uuid}}" action="to_note">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{note.uuid}}" id="note_id" name="note_id">
+                    </form>
+                    <div class="buttons">
+                        <div class="buttons-left">
+                            <button type=submit form="note{{note.uuid}}">Edit note</button>
+                            <button type=submit form="{{note.uuid}}">To note</button>
+                        </div>
+                        <div>
+                            <button onclick="delete_note({{note.uuid}})" class="delete-button" type="button">Delete</button>
+                        </div>
+                    </div>
+                    <h3>{{note.header}}</h3>
+                    {% if note.type == 'NT' %}
+                        <p>Note</p>
+                    {% elif note.type == 'RF' %}
+                        <p>Reference</p>
+                    {% elif note.type == 'MM' %}
+                        <p>Memo</p>
+                    {% elif note.type == 'TD' %}
+                        <p>ToDo</p>
+                    {% else %}
+                        <p>Other</p>
+                    {% endif %}
+
+                    {% if note.favorite %}
+                        <div class="star">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Icons8-star-52.png">
+                        </div>
+                    {% else %}
+                        <div class="circle">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Noun_Project_Star_icon_370530_cc.svg">
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Nothing to see here...</p>
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    <script>
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
+                }
+            })
+        });
+        function delete_note(note_id) {
+                alert(note_id);
+                $.ajax({
+                    type:'POST',
+                    url:'/delete_note',
+                    data:{
+                        note_id:note_id,
+                    },
+                    success: function(data){
+                    }
+                });
+        }
+    </script>
+
+{% endblock content %}
